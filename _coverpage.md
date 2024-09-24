@@ -2,6 +2,6 @@
 
 # Metric Docs for Developer
 
-> Comprehensive Guide for developers.
+> Guide for developers.
 
 [Get Started](#Home)
