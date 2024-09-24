@@ -64,4 +64,13 @@ export const environment = {
 
 > Rember to commit the changes once the deployment is done with the updated version
 
+## Why do we need environment variable when we have the version in package.json ?
+
+We cannot use the version number from `package.json` to display in the UI so we will fetch it and store it in `environment.ts` and use that environment variable wherever we need.
+
+Using it we can display version number in the UI will help both developer and user to know whether the lates change is visible or deployed.
+
+<br>
+<br>
+
 :artist: [Vivek V Pai](https://www.linkedin.com/in/vivek-v-pai-6b674b1b8/)
