@@ -1,6 +1,6 @@
 # Caching mechanism for the frontend
 
-> Caching mechanism desired for the get apis for desired period of time
+> Caching mechanism for desired get apis, for desired period of time and for desired version of the app.
 
 ## Use case for caching
 
