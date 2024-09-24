@@ -1,0 +1,5 @@
+.cover img[alt="logo"] {
+    padding: 10px !important;
+    border-radius: 10px !important;
+    width: 200px;
+}
