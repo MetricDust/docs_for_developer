@@ -14,7 +14,7 @@ The advantage of this are
 
 1. Create a environment file with name `environment.ts` and store the version number in it which will take from the package.json
 
-```
+```typescript
 export const environment = {
     app_version: require('../../package.json').version,
 };
@@ -22,7 +22,7 @@ export const environment = {
 
 2. In `package.json` check if `@types/node` is installed and if not install it.
 
-```
+```json
  "devDependencies": {
     ...
     "@types/node": "^22.5.5",
@@ -33,7 +33,7 @@ export const environment = {
 
 3. Add prebuild in script section of the `package.json`
 
-```
+```json
 "scripts": {
     ...
     "prebuild": "npm --no-git-tag-version version patch",
@@ -47,7 +47,7 @@ export const environment = {
 
 -   The versioning is maintained in `package.json` in a key called version
 
-```
+```json
 "version": "1.0.0"
 ```
 
