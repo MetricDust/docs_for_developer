@@ -4,16 +4,18 @@
 [Home](README.md#Home)
 
 -   Frontend Docs
-    -   [Setup angular project](/error.md)
+
+    -   [Setup angular project](/frontend/angular_setup.md)
     -   [Updating angular and packages](/error.md)
     -   [Auto versioning](/frontend/auto_version.md)
     -   [Cache mechanism](/frontend/caching.md)
     -   [Micro Frontend](/error.md)
 
 -   Backend Docs
+
     -   [Guide for terraform](/error.md)
     -   [Guide for lambda function](/error.md)
 
-- Others
+-   Others
     -   [Setup AWS in Ubuntu](/error.md)
     -   [git Guid](/error.md)

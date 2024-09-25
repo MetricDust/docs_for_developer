@@ -11,9 +11,9 @@ By using caching in the browser, we can check if the data is already stored in t
 
 ## Steps
 
-1. Create a caching service which will contain the cache based function.
+### 1. Create a caching service which will contain the cache based function.
 
-initialize a cache name in a variable `cache_name`. Its better to patch the cache name with the app version. So that we can clear the cache based on the app version and keep only the latest version of the cache.
+Initialize a cache name in a variable `cache_name`. Its better to patch the cache name with the app version. So that we can clear the cache based on the app version and keep only the latest version of the cache.
 
 ```typescript
 cache_name: any = "app-name-v" + environment.app_version;
@@ -23,127 +23,127 @@ Cache service will contain mainly 6 functions.
 
 -   `clear_cache_files()`
 
-```typescript
- async clear_cache_files() {
-    caches
-      .keys()
-      .then((cache_names) => {
-        cache_names.forEach((cache_name) => {
-          caches.delete(cache_name);
-        });
-      })
-      .catch((err) => {
-        console.error('Error while clearing unused caches: ', err);
-      });
-  }
+    ```typescript
+    async clear_cache_files() {
+        caches
+          .keys()
+          .then((cache_names) => {
+            cache_names.forEach((cache_name) => {
+              caches.delete(cache_name);
+            });
+          })
+          .catch((err) => {
+            console.error('Error while clearing unused caches: ', err);
+          });
+      }
 
-```
+    ```
 
-This function is to clear the cache files. This is used if we need to clear all the cached data in the browser. Like while particular press of a button or logout.
+    This function is to clear the cache files. This is used if we need to clear all the cached data in the browser. Like while particular press of a button or logout.
 
 -   `clear_other_cache_file()`
 
-```typescript
-  async clear_other_cache_file(filename: string) {
-    caches
-      .keys()
-      .then((cache_names) => {
-        cache_names.forEach((cache_name) => {
-          if (cache_name !== this.cache_name) {
-            caches.delete(cache_name);
-          }
-        });
-      })
-      .catch((err) => {
-        console.error('Error while clearing unused caches: ', err);
-      });
-  }
-```
+    ```typescript
+      async clear_other_cache_file(filename: string) {
+        caches
+          .keys()
+          .then((cache_names) => {
+            cache_names.forEach((cache_name) => {
+              if (cache_name !== this.cache_name) {
+                caches.delete(cache_name);
+              }
+            });
+          })
+          .catch((err) => {
+            console.error('Error while clearing unused caches: ', err);
+          });
+      }
+    ```
 
-This function is to clear the other cache files that are not the current cache file or which are not with the current app version and doesn't match the filename.
+    This function is to clear the other cache files that are not the current cache file or which are not with the current app version and doesn't match the filename.
 
 -   `clear_cache_key()`
 
-```typescript
-  async clear_cache_key(cache_key: string) {
-    const cache = await caches.open(this.cache_name);
-    try {
-      const keys = await cache.keys();
-      for (const key of keys) {
-        if (key.url.includes(cache_key)) {
-          await cache.delete(key);
+    ```typescript
+      async clear_cache_key(cache_key: string) {
+        const cache = await caches.open(this.cache_name);
+        try {
+          const keys = await cache.keys();
+          for (const key of keys) {
+            if (key.url.includes(cache_key)) {
+              await cache.delete(key);
+            }
+          }
+        } catch (error) {
+          console.log('Error clearing cache:', error);
         }
       }
-    } catch (error) {
-      console.log('Error clearing cache:', error);
-    }
-  }
-```
+    ```
 
-This function is to clear the cache with a particular cache key.This is used when we need to clear the cache for a particular url. For example, when we need to clear the cache for a particular press of a button or when we use a `put` or `post` api and need to get the latest data from the backend.
+    This function is to clear the cache with a particular cache key.This is used when we need to clear the cache for a particular url. For example, when we need to clear the cache for a particular press of a button or when we use a `put` or `post` api and need to get the latest data from the backend.
 
 -   `get_cached_data()`
 
-```typescript
-  async get_cached_data(key: string) {
-    const cache = await caches.open(this.cache_name);
-    const response = await cache.match(key);
-    if (response) {
-      const cachedData = await response.json();
-      return cachedData.data; // Return the actual data from cached object
-    }
-    return null; // Return null if no cached data is found
-  }
-```
+    ```typescript
+      async get_cached_data(key: string) {
+        const cache = await caches.open(this.cache_name);
+        const response = await cache.match(key);
+        if (response) {
+          const cachedData = await response.json();
+          return cachedData.data; // Return the actual data from cached object
+        }
+        return null; // Return null if no cached data is found
+      }
+    ```
 
-This function is to get the cached data from the cache which is stored in the browser. This will get the data from the cache based on the key.
+    This function is to get the cached data from the cache which is stored in the browser. This will get the data from the cache based on the key.
 
 -   `set_cached_data()`
 
-```typescript
-  async set_cached_data(key: string, data: any) {
-    const cache = await caches.open(this.cache_name);
-    const cached_object = {
-      data,
-      timestamp: Date.now(),
-    };
-    const response = new Response(JSON.stringify(cached_object));
-    await cache.put(key, response);
-  }
-```
+    ```typescript
+      async set_cached_data(key: string, data: any) {
+        const cache = await caches.open(this.cache_name);
+        const cached_object = {
+          data,
+          timestamp: Date.now(),
+        };
+        const response = new Response(JSON.stringify(cached_object));
+        await cache.put(key, response);
+      }
+    ```
 
-This function is to set the cached data in the cache. This will set the data in the cache based on the key. It will also set the timestamp in the cache so that we can check if the cache is valid or not.
+    This function is to set the cached data in the cache. This will set the data in the cache based on the key. It will also set the timestamp in the cache so that we can check if the cache is valid or not.
 
 -   `is_cache_valid()`
 
-```typescript
-  async is_cache_valid(key: string, expiry_time: number) {
-    const cache = await caches.open(this.cache_name);
-    const keys = await cache.keys();
+    ```typescript
+      async is_cache_valid(key: string, expiry_time: number) {
+        const cache = await caches.open(this.cache_name);
+        const keys = await cache.keys();
 
-    // check if cache is full. Limit is 50 entries
-    if (keys.length >= 50) {
-      caches.delete(this.cache_name);
-      return false;
-    }
+        // check if cache is full. Limit is 50 entries
+        if (keys.length >= 50) {
+          caches.delete(this.cache_name);
+          return false;
+        }
 
-    const cached_data = await this.get_cached_data(key);
-    if (cached_data) {
-      const cache = await caches.open(this.cache_name);
-      const cache_key_response = await cache.match(key);
-      if (cache_key_response) {
-        const cached_object = await cache_key_response.json();
-        const timeDiff = Date.now() - cached_object.timestamp;
-        return timeDiff < expiry_time; // Return true if cache is still valid
+        const cached_data = await this.get_cached_data(key);
+        if (cached_data) {
+          const cache = await caches.open(this.cache_name);
+          const cache_key_response = await cache.match(key);
+          if (cache_key_response) {
+            const cached_object = await cache_key_response.json();
+            const timeDiff = Date.now() - cached_object.timestamp;
+            return timeDiff < expiry_time; // Return true if cache is still valid
+          }
+        }
+        return false; // Return false if no cache or expired
       }
-    }
-    return false; // Return false if no cache or expired
-  }
-```
+    ```
 
-This function is to check if the cache is valid or not. It will check if the cache is valid or not based on the key and expiry time. Based on that it will return true or false. Here the is one more check that is to check **if the cache is full or not**. If it is full then we will delete the cache and return false.
+    This function is to check if the cache is valid or not. It will check if the cache is valid or not based on the key and expiry time. Based on that it will return true or false. Here the is one more check that is to check **if the cache is full or not**. If it is full then we will delete the cache and return false.
 
-2. Use the caching service in the other services where we need to cache the data or get the data from the cache.
+### 2. Use the caching service in the other services where we need to cache the data or get the data from the cache.
 
 > Ideally used in the get api function where we need to get the data from the cache or from the backend.
 
