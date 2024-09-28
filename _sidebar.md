@@ -5,6 +5,7 @@
 
 -   Frontend Docs
 
+    -   [Mandatory Rules](/frontend/front_end_mandate.md)
     -   [Setup angular project](/frontend/angular_setup.md)
     -   [Updating angular and packages](/error.md)
     -   [Auto versioning](/frontend/auto_version.md)

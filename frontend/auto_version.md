@@ -78,7 +78,3 @@ We cannot use the version number from `package.json` to display in the UI so we 
 
 Using it we can display version number in the UI will help both developer and user to know whether the lates change is visible or deployed.
 
-<br>
-<br>
-
-:artist: [Vivek V Pai](https://www.linkedin.com/in/vivek-v-pai-6b674b1b8/)

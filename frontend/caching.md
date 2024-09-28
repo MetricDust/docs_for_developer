@@ -218,8 +218,3 @@ this.cache.clear_cache_files();
 > Don't forget to inject the service. If angular version is less that 16 use constructor to inject.
 
 By generalizing the cache function to store only the desired APIs and clear old cached data, this approach ensures that the cache works efficiently and only for the relevant duration.
-
-<br>
-<br>
-
-:artist: [Vivek V Pai](https://www.linkedin.com/in/vivek-v-pai-6b674b1b8/)

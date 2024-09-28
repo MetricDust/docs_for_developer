@@ -9,6 +9,8 @@ These are the practices and steps used for development and guidelines for the be
 ## Docs List
 
 -   Frontend Docs
+
+    -   [Mandatory Rules](/frontend/front_end_mandate.md)
     -   [Setup angular project](/error.md)
     -   [Updating angular and packages](/error.md)
     -   [Auto versioning](/frontend/auto_version.md)
@@ -16,9 +18,10 @@ These are the practices and steps used for development and guidelines for the be
     -   [Micro Frontend](/error.md)
 
 -   Backend Docs
+
     -   [Guide for terraform](/error.md)
     -   [Guide for lambda function](/error.md)
 
-- Others
+-   Others
     -   [Setup AWS in Ubuntu](/error.md)
     -   [git Guid](/error.md)

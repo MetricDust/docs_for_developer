@@ -209,8 +209,3 @@ To setup an Angular project in WSL ubuntu, follow the steps below:
     ```bash
     ng -v
     ```
-
-<br>
-<br>
-
-:artist: [Vivek V Pai](https://www.linkedin.com/in/vivek-v-pai-6b674b1b8/)
