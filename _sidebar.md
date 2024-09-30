@@ -14,6 +14,7 @@
 
 -   Backend Docs
 
+    -   [Mandatory Rules](/error.md)
     -   [Guide for terraform](/error.md)
     -   [Guide for lambda function](/error.md)
 

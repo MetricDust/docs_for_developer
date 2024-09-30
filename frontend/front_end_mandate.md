@@ -10,7 +10,7 @@
 -   Proper **comments** must be used for functions parameters and return type when ever needed or the name for the **params can be self explanatory**.
 -   **deprecated syntax** must be avoided and if any must be changed to proper syntax.
 -   Class and styles must be maintained as mush as in generic way and those can be kept in **styles.scss** file.
--   Try to make the page **seatless** as musch as possible using queryparams or path params. **preferred query params**
+-   Try to make the page **stateless** as musch as possible using queryparams or path params. **preferred query params**
 -   Where ever the id or any other params is required is taken form the **query params it must be single variable** and must be using same variable when needed.
 -   Use of observables can be reduces and **signals** can be used as alternative.
 -   Local storage must be **secured or encrypted** and must clear them on logout or closed.

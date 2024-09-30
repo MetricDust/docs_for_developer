@@ -19,6 +19,7 @@ These are the practices and steps used for development and guidelines for the be
 
 -   Backend Docs
 
+    -   [Mandatory Rules](/error.md)
     -   [Guide for terraform](/error.md)
     -   [Guide for lambda function](/error.md)
 
