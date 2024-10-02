@@ -84,3 +84,11 @@ export class SampleComponent {
 ```
 
 This pattern will help in code review and debugging.
+
+### Command to change CRLF to LF in bash scripts
+
+```bash
+sed -i 's/\r//' deploy_to_beta.sh
+sed -i 's/\r//' deploy_to_prod.sh
+sed -i 's/\r//' deploy.sh
+```
