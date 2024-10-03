@@ -8,6 +8,7 @@
 -   Names of variable and function must be self explanatory and with proper formate either in **camelCase** or **snake_case** and it must be followed through the code.
 -   Variable must be assigned with **proper type** of it like string, boolean, number etc.
 -   Proper **comments** must be used for functions parameters and return type when ever needed or the name for the **params can be self explanatory**.
+-   Every **if** condition must be followed with **else**. when there is nothing in else block it can be have just comments
 -   **deprecated syntax** must be avoided and if any must be changed to proper syntax.
 -   Class and styles must be maintained as mush as in generic way and those can be kept in **styles.scss** file.
 -   Try to make the page **stateless** as musch as possible using queryparams or path params. **preferred query params**
