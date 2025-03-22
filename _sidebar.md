@@ -12,6 +12,9 @@
     -   [Cache mechanism](/frontend/caching.md)
     -   [Micro Frontend](/error.md)
 
+- API USE Docs
+    -   [Personalization API](/api/personalization.md)
+
 -   Backend Docs
 
     -   [Mandatory Rules](/error.md)
