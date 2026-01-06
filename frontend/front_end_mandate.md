@@ -1,5 +1,162 @@
 # Rules for frontend developers which should be followed Mandatorily
 
+## PR and Task Rules
+
+This document explains **how developers and reviewers should work using Azure Boards and Pull Requests**. The goal is clarity, consistency, and zero confusion.
+
+---
+
+## Sprint Board Structure
+
+### Board Columns
+
+The sprint board contains the following columns:
+
+* **(No Heading Column)** – Used for the **Story / Main Task**
+* **To Do** – Tasks ready to be picked up (State: New)
+* **In Progress** – Tasks actively being worked on
+* **Blocked** – Tasks that cannot continue due to issues or dependencies
+* **Done** – Completed tasks
+* **Revision** – Used when a PR is rejected and changes are required
+
+### Story and Tasks
+
+* A **Story** is the main requirement or feature
+* Each story is **divided into multiple tasks**
+* Developers work on **tasks**, not directly on stories
+* Ideally:
+  * Story and tasks belong to the **same repository**
+  * Story and tasks use the **same branch**
+
+---
+
+## For Developers
+
+### Before Starting Any Work
+
+1. **Check Task Assignment**
+   * Verify the task is **assigned to you**
+   * Do not start work on unassigned tasks
+2. **Clear Any Doubts Early**
+   * If requirements are unclear:
+     * Ask questions immediately
+     * Get clarity before writing any code
+3. **Check the Sprint Board**
+   * Review all columns (To Do, In Progress, Blocked, Done)
+4. **Understand the Story First**
+   * Open the story (main task)
+   * Read and understand the requirement clearly
+   * Do not start development without clarity
+5. **Repository and Branch Linking (Mandatory)**
+   * Verify the story is linked to the correct repository and branch
+   * If not linked:
+     * Create a branch immediately
+     * Link the story to that branch
+   * Link all related tasks to the same branch
+
+---
+
+### Working on Tasks
+
+1. **Initial State**
+   * Tasks will be available in the **To Do** column
+   * Task state should be **New**
+2. **Start Work**
+   * Move the task from **To Do → In Progress**
+3. **Blocked Tasks**
+   * If work cannot continue:
+     * Move the task to **Blocked**
+     * Add a comment explaining the reason
+4. **Complete Task**
+   * After finishing development and committing changes:
+     * Move the task to **Done**
+
+---
+
+### Completing the Story
+
+1. **Verify All Tasks**
+   * Ensure all tasks under the story are in **Done** state
+2. **Resolve the Story**
+   * Change the story state to **Resolved** using the state dropdown
+
+---
+
+### Pull Request Rules
+
+1. **Create PR**
+   * PR must be created only after the story is in **Resolved** state
+2. **Reviewers (Mandatory)**
+   * Add a minimum of **2 reviewers**
+3. **Approval and Merge**
+   * Ensure reviewers have:
+     * Added comments
+     * Approved the PR
+   * Merge only to **main / master** branch
+4. **Post Merge**
+   * Run the pipeline after merge
+
+---
+
+### If PR Is Rejected
+
+1. **Board Updates**
+   * Move the task to **Revision** column
+   * Change the story state to **Active**
+2. **Fix and Resubmit**
+   * Address all review comments
+   * Push changes to the **same branch**
+   * Create a **new PR**
+
+---
+
+## For Reviewers
+
+### Before Reviewing the PR
+
+1. **Check Tasks**
+   * Confirm all tasks under the story are completed
+2. **Check Story State**
+   * Story must be in **Resolved** state
+   * If not resolved, do not proceed with approval
+
+---
+
+### Reviewing the PR
+
+1. **Code Review**
+   * Review logic, structure, and correctness
+   * Ensure implementation matches the story requirements
+
+2. **Approve or Reject**
+   * If code is correct:
+     * Approve the PR
+   * If issues exist:
+     * Reject the PR
+     * Add clear and actionable comments
+
+---
+
+### If PR Is Rejected
+
+1. **Board Actions**
+   * Move the task to **Revision** column
+   * Change the story state to **Active**
+2. **Feedback Quality**
+   * Comments should be specific and easy to act on
+
+---
+
+## Final Notes
+
+* Board status must always reflect reality
+* No resolved story without completed tasks
+* No merge without approval
+
+Follow the process to keep delivery clean and predictable.
+
+---
+
 ## Front end Coding practices
 
 -   Code must be **logs free** before being deployed or committed.
