@@ -77,7 +77,11 @@ The sprint board contains the following columns:
 
 1. **Verify All Tasks**
    * Ensure all tasks under the story are in **Done** state
-2. **Resolve the Story**
+2. **Manual Version Upgrade (Mandatory)**
+   * Once tasks are completed and before resolving the story:
+     * Manually upgrade the required version (Major / Minor / Patch)
+     * Ensure version bump follows team/versioning rules
+3. **Resolve the Story**
    * Change the story state to **Resolved** using the state dropdown
 
 ---
@@ -86,14 +90,18 @@ The sprint board contains the following columns:
 
 1. **Create PR**
    * PR must be created only after the story is in **Resolved** state
-2. **Reviewers (Mandatory)**
+2. **PR Comment Requirement (Mandatory)**
+   * In the PR comments, explicitly mention:
+     * The **version upgrade performed**
+     * Example: `Version bumped from v1.2.3 → v1.2.4`
+3. **Reviewers (Mandatory)**
    * Add a minimum of **2 reviewers**
-3. **Approval and Merge**
+4. **Approval and Merge**
    * Ensure reviewers have:
      * Added comments
      * Approved the PR
    * Merge only to **main / master** branch
-4. **Post Merge**
+5. **Post Merge**
    * Run the pipeline after merge
 
 ---
@@ -124,13 +132,19 @@ The sprint board contains the following columns:
 
 ### Reviewing the PR
 
-1. **Code Review**
+1. **Version Verification (Mandatory)**
+   * Check that the **version has been manually upgraded**
+   * Verify the version change mentioned in PR comments
+   * If version is missing or incorrect:
+     * Reject the PR
+     * Ask for proper version update
+2. **Code Review**
    * Review logic, structure, and correctness
    * Ensure implementation matches the story requirements
-
-2. **Approve or Reject**
+3. **Approve or Reject**
    * If code is correct:
      * Approve the PR
+     * Add comments
    * If issues exist:
      * Reject the PR
      * Add clear and actionable comments
@@ -140,8 +154,8 @@ The sprint board contains the following columns:
 ### If PR Is Rejected
 
 1. **Board Actions**
-   * Move the task to **Revision** column
-   * Change the story state to **Active**
+   * Move the task to **Revision** column or ask developer to move the task to **Revision** column
+   * Change the story state to **Active** or ask developer to change the story state to **Active**
 2. **Feedback Quality**
    * Comments should be specific and easy to act on
 
